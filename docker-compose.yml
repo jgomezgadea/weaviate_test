@@ -17,6 +17,10 @@ services:
     - data-node-1:/var/lib/weaviate
     restart: on-failure:0
     environment:
+      AUTHENTICATION_APIKEY_ENABLED: 'true'
+      AUTHENTICATION_APIKEY_ALLOWED_KEYS: 'user-a-key,user-b-key' # TODO The API keys should be a gh secret.
+      AUTHENTICATION_APIKEY_USERS: 'user-a,user-b'
+
       LOG_LEVEL: 'debug'
       QUERY_DEFAULTS_LIMIT: 25
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
